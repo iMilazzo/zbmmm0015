@@ -1,0 +1,85 @@
+<mvc:View xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:f="sap.f"
+  xmlns:t="sap.ui.table"
+  xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+  xmlns:smartTable="sap.ui.comp.smarttable"
+  xmlns:sv="sap.ui.comp.smartvariants" controllerName="br.com.arcelor.zbmmm0015.controller.Home">
+
+  <f:DynamicPage id="DynamicPage" headerExpanded="true" class="sapUiNoContentPadding" fitContent="true" showFooter="true">
+
+    <!-- DynamicPage Title -->
+    <f:title>
+      <f:DynamicPageTitle>
+        <f:heading>
+          <Title text="{i18n>title}"/>
+        </f:heading>
+        <f:content>
+        </f:content>
+      </f:DynamicPageTitle>
+    </f:title>
+
+    <!-- DynamicPage Header -->
+    <f:header>
+      <f:DynamicPageHeader pinnable="true">
+        <f:content>
+          <VBox fitContainer="true">
+            <smartFilterBar:SmartFilterBar id="smartFilterBar" liveMode="false" search="onSearch" showMessages="true" entitySet="RelEquilibrioSet" persistencyKey="SmartFilter_zbmmm0015" initialized="onInitializedSmartFilterBar" filterChange="onfilterChange" considerSelectionVariants="true">
+
+              <smartFilterBar:controlConfiguration>
+
+                <smartFilterBar:ControlConfiguration key="Werks" index="1" visibleInAdvancedArea="true" filterType="single" width="10px" mandatory="mandatory" hasValueHelpDialog="true" preventInitialDataFetchInValueHelpDialog="false">
+                </smartFilterBar:ControlConfiguration>
+                <smartFilterBar:ControlConfiguration key="Docdat" index="3" conditionType="sap.ui.comp.config.condition.DateRangeType" visibleInAdvancedArea="true" mandatory="notMandatory">
+                </smartFilterBar:ControlConfiguration>
+                <smartFilterBar:ControlConfiguration key="Docmatdata" index="2" conditionType="sap.ui.comp.config.condition.DateRangeType" visibleInAdvancedArea="true" mandatory="notMandatory">
+                </smartFilterBar:ControlConfiguration>
+                <smartFilterBar:ControlConfiguration key="Nfnum" index="4" visibleInAdvancedArea="true">
+                </smartFilterBar:ControlConfiguration>
+                <smartFilterBar:ControlConfiguration key="Parid" index="5" visibleInAdvancedArea="true">
+                </smartFilterBar:ControlConfiguration>
+                <smartFilterBar:ControlConfiguration key="Ebeln" index="6" visibleInAdvancedArea="true">
+                </smartFilterBar:ControlConfiguration>
+                <!--
+          <smartFilterBar:ControlConfiguration key="Bwart" index="6" visibleInAdvancedArea="true">
+          </smartFilterBar:ControlConfiguration>
+          -->
+                <smartFilterBar:ControlConfiguration key="Bwart" index="7" displayBehaviour="idOnly" visibleInAdvancedArea="true" controlType="dropDownList" hasValueHelpDialog="true" preventInitialDataFetchInValueHelpDialog="false"/>
+                <smartFilterBar:ControlConfiguration key="Matnr" index="8" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+                <smartFilterBar:ControlConfiguration key="AgrupamentoProduto" index="9" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"></smartFilterBar:ControlConfiguration>
+                <smartFilterBar:ControlConfiguration key="TipoRel" index="10" visibleInAdvancedArea="true" mandatory="mandatory" filterType="single" hasValueHelpDialog="true" controlType="dropDownList" displayBehaviour="descriptionOnly" preventInitialDataFetchInValueHelpDialog="false">
+                </smartFilterBar:ControlConfiguration>
+              </smartFilterBar:controlConfiguration>
+
+              <!-- layout data used to make the table growing but the filter bar fixed -->
+              <smartFilterBar:layoutData>
+                <FlexItemData shrinkFactor="0"/>
+              </smartFilterBar:layoutData>
+
+            </smartFilterBar:SmartFilterBar>
+          </VBox>
+
+          <VBox fitContainer="true">
+            <MessageStrip text="{i18n>msgInfo}" showIcon="true" showCloseButton="true" class="sapUiMediumMarginBottom">
+            </MessageStrip>
+          </VBox>
+
+        </f:content>
+      </f:DynamicPageHeader>
+    </f:header>
+
+    <!-- DynamicPage Content -->
+    <f:content>
+      <smartTable:SmartTable id="smartTable" entitySet="RelEquilibrioSet" smartFilterId="smartFilterBar" tableType="AnalyticalTable" useExportToExcel="true" useVariantManagement="true" useTablePersonalisation="true" header="{i18n>stAnaliticoHeader}" showRowCount="true" persistencyKey="smartTable_zbmmm0015" showFullScreenButton="true" beforeRebindTable="onDataReceived" initiallyVisibleFields="NfenumRef,SeriesRef,Nfnum,Series,Docnum,Parid,Name1,Itmnum,Bwart,Matnr,Maktx,AgrupamentoProduto,LinhaProduto,Menge,Netpr,Netwr,Ebeln,Ebelp,Usnam,DocnumRef,ItmnumRef,QtdEnvio,Qtd543,Qtd101,Qtd309,Qtd542,QtdZs9,QtdSaldo,Status,Docdat,Werks">
+
+        <smartTable:layoutData>
+          <FlexItemData growFactor="1" baseSize="0%"/>
+        </smartTable:layoutData>
+        <!--<Table mode="None"></Table>-->
+      </smartTable:SmartTable>
+
+    </f:content>
+
+  </f:DynamicPage>
+
+</mvc:View>
